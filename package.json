@@ -1,0 +1,124 @@
+{
+	"name": "cai",
+	"displayName": "cai",
+	"description": "Code AI",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.93.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onLanguage:plaintext",
+		"onCommand:cai.chatCommand",
+		"onCommand:cai.editCommand",
+		"onStartupFinished"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "cai.helloWorld",
+				"title": "Hello World"
+			},
+			{
+				"command": "cai.askChatGPT",
+				"title": "Ask ChatGPT",
+				"icon": {
+					"light": "images/icon-light.svg",
+					"dark": "images/icon-dark.svg"
+				}
+			}
+		],
+		"keybindings": [
+			{
+				"command": "cai.editCommand",
+				"key": "cmd+k",
+				"mac": "cmd+k",
+				"when": "editorTextFocus"
+			},
+			{
+				"command": "cai.editCommand",
+				"key": "ctrl+k",
+				"when": "editorTextFocus"
+			},
+			{
+				"command": "cai.chatCommand",
+				"key": "cmd+l",
+				"mac": "cmd+l",
+				"when": "editorTextFocus"
+			},
+			{
+				"command": "cai.chatCommand",
+				"key": "ctrl+l",
+				"when": "editorTextFocus"
+			}
+		],
+		"menus": {
+			"editor/title": [
+				{
+					"command": "cai.askChatGPT",
+					"when": "editorHasSelection",
+					"group": "navigation@10"
+				}
+			]
+		},
+		"configuration": {
+			"title": "chatGPT",
+			"type": "object",
+			"properties": {
+				"cai.apiToken": {
+					"type": "string",
+					"description": "An API token from platform.openai.com",
+					"order": 1
+				},
+				"cai.sessionToken": {
+					"type": "string",
+					"description": "A session token you get when logged into chat.openai.com",
+					"order": 1
+				}
+			}
+		},
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "chatgpt",
+					"title": "Code AI",
+					"icon": "resources/ai.svg"
+				}
+			]
+		},
+		"views": {
+			"chatgpt": [
+				{
+					"type": "webview",
+					"id": "cai.chatgpt",
+					"name": "ChatGPT"
+				}
+			]
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run compile && npm run lint",
+		"lint": "eslint src",
+		"test": "vscode-test"
+	},
+	"devDependencies": {
+		"@types/mocha": "^10.0.7",
+		"@types/node": "20.x",
+		"@types/vscode": "^1.93.0",
+		"@typescript-eslint/eslint-plugin": "^8.3.0",
+		"@typescript-eslint/parser": "^8.3.0",
+		"@vscode/test-cli": "^0.0.10",
+		"@vscode/test-electron": "^2.4.1",
+		"eslint": "^9.9.1",
+		"typescript": "^5.5.4"
+	},
+	"dependencies": {
+		"axios": "^1.7.7"
+	}
+}

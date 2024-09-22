@@ -1,0 +1,19 @@
+{
+	"name": "app",
+	"version": "1.0.0",
+	"main": "main.js",
+	"scripts": {
+		"build": "vite build",
+		"dev": "vite"
+	},
+	"type": "module",
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"description": "",
+	"dependencies": {
+		"@vitejs/plugin-vue": "^5.1.4",
+		"vite": "^5.4.7",
+		"vue": "^3.5.8"
+	}
+}
