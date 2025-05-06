@@ -23,4 +23,4 @@ Initial experimental release
 # info
 This project is part of Newicon labs:
 
-[Newicon.net](https://newicon.net/labs)
+[Newicon.net/lab](https://newicon.net/lab)
